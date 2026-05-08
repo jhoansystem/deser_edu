@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación en Colombia - Modelo de Predicción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(circle at center, #1e1b4b 0%, var(--bg-dark) 100%);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        p.subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--bg-card);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #818cf8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(79, 70, 229, 0.2);
+            color: #818cf8;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="glow" style="top: 20%; left: 20%;"></div>
+        <div class="glow" style="bottom: 20%; right: 20%; background: var(--secondary);"></div>
+        
+        <h1>Inteligencia Artificial en la Educación</h1>
+        <p class="subtitle">Descubriendo los patrones detrás del éxito y la deserción escolar en los municipios de Colombia mediante algoritmos de Machine Learning y la metodología CRISP-ML.</p>
+        <a href="https://deseredu.streamlit.app/" target="_blank" class="btn-primary">Explorar la Aplicación</a>
+        <a href="https://github.com/jhoansystem/deser_edu.git" target="_blank" class="btn-primary" style="margin-top: 1rem; background: transparent; border: 2px solid var(--primary); box-shadow: none;">Ver Repositorio en GitHub</a>
+    </header>
+
+    <div class="container">
+        <section class="fade-in">
+            <h2>Propósito y Objetivo</h2>
+            <div class="card">
+                <h3>¿Qué buscamos resolver?</h3>
+                <p>El sistema educativo colombiano se enfrenta a retos significativos, especialmente en regiones apartadas. Nuestro objetivo principal es <strong>predecir la tasa de aprobación escolar</strong> basándonos en variables como la población, la cobertura neta y la cobertura bruta. Al entender estos factores, podemos ayudar a las entidades gubernamentales a tomar decisiones informadas para mejorar la calidad educativa.</p>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>El Problema</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Deserción y Reprobación</h3>
+                    <p>Tasas altas de deserción y reprobación indican un fallo en la retención de estudiantes. Comprender su relación con la cobertura ayuda a focalizar recursos.</p>
+                </div>
+                <div class="card">
+                    <h3>Desigualdad Regional</h3>
+                    <p>Las diferencias entre municipios son abismales. La falta de acceso a internet o de cobertura educativa en zonas rurales incrementa la brecha.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>Metodología: CRISP-ML</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Comprensión del Negocio</h3>
+                    <p>Identificar la necesidad de mejorar la aprobación escolar.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Comprensión de los Datos</h3>
+                    <p>Análisis de un dataset de más de 15,000 registros educativos.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Preparación de Datos</h3>
+                    <p>Limpieza de formatos, manejo de nulos y estandarización.</p>
+                </div>
+                <div class="card">
+                    <h3>4. Modelado</h3>
+                    <p>Uso de Regresión Lineal Múltiple y Regresión Logística para estimar la aprobación y el riesgo de deserción.</p>
+                </div>
+                <div class="card">
+                    <h3>5. Evaluación</h3>
+                    <p>Validación de los modelos usando métricas como MSE, R² y Accuracy.</p>
+                </div>
+                <div class="card">
+                    <h3>6. Despliegue</h3>
+                    <p>Implementación en Streamlit para fácil interacción de los usuarios.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>Variables del Dataset</h2>
+            <p>El modelo utiliza las siguientes variables predictoras y objetivo de la base de datos `EDUCACION.csv`.</p>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MUNICIPIO / DEPARTAMENTO</strong></td>
+                            <td>Categórica</td>
+                            <td>Ubicación geográfica del registro.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>POBLACIÓN_5_16</strong></td>
+                            <td>Numérica</td>
+                            <td>Cantidad de habitantes en edad escolar (5 a 16 años).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>COBERTURA_NETA</strong></td>
+                            <td>Numérica (%)</td>
+                            <td>Proporción de niños en edad escolar que asisten a la escuela en el grado que les corresponde.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>COBERTURA_BRUTA</strong></td>
+                            <td>Numérica (%)</td>
+                            <td>Proporción de niños matriculados independientemente de su edad frente a la población en edad escolar.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>APROBACIÓN</strong></td>
+                            <td>Numérica (%)</td>
+                            <td><strong>(Variable Objetivo)</strong> Porcentaje de estudiantes que aprobaron el año lectivo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="fade-in" id="app">
+            <h2>Aplicación Web Interactiva</h2>
+            <div class="card" style="text-align: center; padding: 4rem 2rem;">
+                <h3>Prueba los Modelos en Vivo</h3>
+                <p style="margin-bottom: 2rem;">Interactúa con los modelos de Machine Learning alojados en Streamlit. Modifica las variables de entrada y obtén predicciones en tiempo real mediante Regresión Lineal y Regresión Logística.</p>
+                <a href="https://deseredu.streamlit.app/" target="_blank" class="btn-primary">Abrir Aplicación Streamlit</a>
+            </div>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem;">
+        <p>&copy; 2024 Proyecto TalentoTech - Predicción Educativa</p>
+    </footer>
+
+    <script>
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
